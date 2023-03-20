@@ -12,11 +12,11 @@ const connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
-    initPromt();
+    initPrompt();
   });
 
 function initPrompt() {
-    inquirer.createPromptModule({
+    inquirer.prompt({
         type: 'list',
         message: 'What would you like to do?',
         name: 'option',
@@ -33,8 +33,8 @@ function initPrompt() {
         
         ]
     })
-    .then(function (answer) {
-        switch (answer.initPromt) {
+    .then((answer) => {
+        switch (answer.option) {
           case "View All Employees":
             viewEmployees();
             break;
@@ -190,4 +190,4 @@ function updateEmployeeRole() {
         });
 };
 
-initPrompt();
+// initPrompt();
